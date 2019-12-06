@@ -1,5 +1,7 @@
 #! /usr/bin/env python3
 '''
+Program should give a selection of math problems that the user should solve in as little time as possible.
+The program should save the time taken to solve a specific category of question, and provide statistics on this.
 commands:
     all - practice all kinds of questions
     addition
@@ -9,11 +11,11 @@ commands:
 shortcuts:
     Ctrl + i = list of commands
     Ctrl + r = return to menu
+TODO:
     Ctrl + e = exit game
     Ctrl + s = stats
-
-
 '''
+
 import random
 from datetime import datetime as dt
 import keyboard
