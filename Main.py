@@ -1,4 +1,5 @@
 #! /usr/bin/env python3
+
 '''
 Program should give a selection of math problems that the user should solve in as little time as possible.
 The program should save the time taken to solve a specific category of question, and provide statistics on this.
@@ -10,24 +11,19 @@ commands:
     division
 
     Type cancel to return to main menu
-
-shortcuts:
-    Ctrl + i = list of commands
-TODO:
-    Ctrl + e = exit game
-    Ctrl + s = stats
+TODO: Stats system
+TODO: Setting system
+TODO: Fix inconsistent quotations
 '''
 
 import random
 from datetime import datetime as dt
-import keyboard
-import os
+import sys
 
-def loadHotKeys():
-    # TODO: Make this only work on main menu
-    keyboard.add_hotkey('ctrl+i', printHotKeys)
-    #keyboard.add_hotkey('ctrl+r', mainMenu)
 
+def exitGame():
+    print("Thanks for playing!")
+    sys.exit()
 
 def mainMenu():
     while True:
@@ -59,12 +55,8 @@ def mainMenu():
         elif userInput == "division":
             while True:
                     divideProblem()
-
-
-
-def printHotKeys():
-    print("Ctrl + i = list of commands\nCtrl + e = exit game\nCtrl + s = stats\nTo stop practicing a specific problem type and return to the main menu, type: cancel")
-
+        elif userInput == "exit":
+            exitGame()
 def sumProblem():
     num1 = random.randrange(1,2000)
     num2 = random.randrange(1,2000)
@@ -76,6 +68,8 @@ def sumProblem():
         try:
             if userAnswer == 'cancel':
                 mainMenu()
+            elif userAnswer == 'exit':
+                exitGame()
             elif int(userAnswer) == answer:
                 endTime = dt.now()
                 time = endTime - startTime
@@ -95,6 +89,8 @@ def minusProblem():
         try:
             if userAnswer == 'cancel':
                 mainMenu()
+            elif userAnswer == 'exit':
+                exitGame()
             elif int(userAnswer) == answer:
                 endTime = dt.now()
                 time = endTime - startTime
@@ -114,6 +110,8 @@ def multProblem():
         try:
             if userAnswer == 'cancel':
                 mainMenu()
+            elif userAnswer == 'exit':
+                exitGame()
             elif int(userAnswer) == answer:
                 endTime = dt.now()
                 time = endTime - startTime
@@ -133,6 +131,8 @@ def divideProblem():
         try:
             if userAnswer == 'cancel':
                 mainMenu()
+            elif userAnswer == 'exit':
+                exitGame()
             elif int(userAnswer) == answer:
                 endTime = dt.now()
                 time = endTime - startTime
@@ -141,6 +141,5 @@ def divideProblem():
         except ValueError:
             pass
 
-print("This is a program for improving your math ability, press ctrl + i for a list of commands\nIf you are done practicing a specific question, type cancel to return to the main menu")
-loadHotKeys()
+print("This is a program for improving your mathematical ability.\nIf you are done practicing a specific type of question, type cancel to return to the main menu.\nType exit to exit the game.")
 mainMenu()
