@@ -63,7 +63,7 @@ def mainMenu():
 
 
 def printHotKeys():
-    print("Ctrl + i = list of commands\nCtrl + r = return to menu\nCtrl + e = exit game\nCtrl + s = stats")
+    print("Ctrl + i = list of commands\nCtrl + e = exit game\nCtrl + s = stats\nTo stop practicing a specific problem type and return to the main menu, type: cancel")
 
 def sumProblem():
     num1 = random.randrange(1,2000)
@@ -141,6 +141,6 @@ def divideProblem():
         except ValueError:
             pass
 
-print("This is a program for improving your math ability, press ctrl + i for a list of commands")
+print("This is a program for improving your math ability, press ctrl + i for a list of commands\nIf you are done practicing a specific question, type cancel to return to the main menu")
 loadHotKeys()
 mainMenu()
