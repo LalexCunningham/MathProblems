@@ -8,9 +8,11 @@ commands:
     subtraction
     multiplication
     division
+
+    Type cancel to return to main menu
+
 shortcuts:
     Ctrl + i = list of commands
-    Ctrl + r = return to menu
 TODO:
     Ctrl + e = exit game
     Ctrl + s = stats
@@ -22,8 +24,9 @@ import keyboard
 import os
 
 def loadHotKeys():
+    # TODO: Make this only work on main menu
     keyboard.add_hotkey('ctrl+i', printHotKeys)
-    keyboard.add_hotkey('ctrl+r', mainMenu)
+    #keyboard.add_hotkey('ctrl+r', mainMenu)
 
 
 def mainMenu():
@@ -71,7 +74,9 @@ def sumProblem():
         userAnswer = input("{} + {} = \n".format(num1, num2))
 
         try:
-            if int(userAnswer) == answer:
+            if userAnswer == 'cancel':
+                mainMenu()
+            elif int(userAnswer) == answer:
                 endTime = dt.now()
                 time = endTime - startTime
                 print(time)
@@ -87,11 +92,16 @@ def minusProblem():
         startTime = dt.now()
         userAnswer = input("{} - {} = \n".format(num1, num2))
 
-        if int(userAnswer) == answer:
-            endTime = dt.now()
-            time = endTime - startTime
-            print(time)
-            break
+        try:
+            if userAnswer == 'cancel':
+                mainMenu()
+            elif int(userAnswer) == answer:
+                endTime = dt.now()
+                time = endTime - startTime
+                print(time)
+                break
+        except ValueError:
+            pass
 
 def multProblem():
     num1 = random.randrange(1,12)
@@ -101,11 +111,16 @@ def multProblem():
         startTime = dt.now()
         userAnswer = input("{} * {} = \n".format(num1, num2))
 
-        if int(userAnswer) == answer:
-            endTime = dt.now()
-            time = endTime - startTime
-            print(time)
-            break
+        try:
+            if userAnswer == 'cancel':
+                mainMenu()
+            elif int(userAnswer) == answer:
+                endTime = dt.now()
+                time = endTime - startTime
+                print(time)
+                break
+        except ValueError:
+            pass
 
 def divideProblem():
     num1 = random.randrange(1, 12)
@@ -115,11 +130,16 @@ def divideProblem():
         startTime = dt.now()
         userAnswer = input("{} / {} = \n".format(num1, num2))
 
-        if int(userAnswer) == answer:
-            endTime = dt.now()
-            time = endTime - startTime
-            print(time)
-            break
+        try:
+            if userAnswer == 'cancel':
+                mainMenu()
+            elif int(userAnswer) == answer:
+                endTime = dt.now()
+                time = endTime - startTime
+                print(time)
+                break
+        except ValueError:
+            pass
 
 print("This is a program for improving your math ability, press ctrl + i for a list of commands")
 loadHotKeys()
