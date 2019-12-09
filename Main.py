@@ -20,6 +20,35 @@ import random
 from datetime import datetime as dt
 import sys
 
+# Create the required data files if they are not already created
+def initialize():
+    try:
+        f = open('./mathProblemsData/AD_data.dat', 'r')
+        if f.readline() != '# This is the header for AD_data\n':
+            createFiles()
+    except FileNotFoundError:
+        createFiles()
+
+def createFiles():
+
+    f = open('./mathProblemsData/AD_data.dat', 'w+')
+    f.write('# This is the data file for all addition questions\n')
+    f.close()
+
+    f = open('./mathProblemsData/SU_data.dat', 'w+')
+    f.write('# This is the data file for all subtraction questions\n')
+    f.close()
+
+    f = open('./mathProblemsData/MU_data.dat', 'w+')
+    f.write('# This is the data file for all multiplication questions\n')
+    f.close()
+
+    f = open('./mathProblemsData/DI_data.dat', 'w+')
+    f.write('# This is the data file for all division questions\n')
+    f.close()
+
+
+
 
 def exitGame():
     print("Thanks for playing!")
@@ -164,5 +193,6 @@ def divideProblem():
         except ValueError:
             pass
 
+initialize()
 print("This is a program for improving your mathematical ability.\nIf you are done practicing a specific type of question, type cancel to return to the main menu.\nType exit to exit the game.")
 mainMenu()
