@@ -57,9 +57,28 @@ def mainMenu():
                     divideProblem()
         elif userInput == "exit":
             exitGame()
+
+def saveData(type, timestamp, time):
+    if type == 'addition':
+        f = open('./mathProblemsData/AD_data.dat', 'a')
+        f.write('{}, {}\n'.format(timestamp, time))
+        f.close()
+    elif type == 'subtraction':
+        f = open('./mathProblemsData/SU_data.dat', 'a')
+        f.write('{}, {}\n'.format(timestamp, time))
+        f.close()
+    elif type == 'multiplication':
+        f = open('./mathProblemsData/MU_data.dat', 'a')
+        f.write('{}, {}\n'.format(timestamp, time))
+        f.close()
+    elif type == 'division':
+        f = open('./mathProblemsData/DI_data.dat', 'a')
+        f.write('{}, {}\n'.format(timestamp, time))
+        f.close()
+
 def sumProblem():
-    num1 = random.randrange(1,2000)
-    num2 = random.randrange(1,2000)
+    num1 = random.randrange(1,1000)
+    num2 = random.randrange(1,1000)
     answer = num1 + num2
     while True:
         startTime = dt.now()
@@ -74,6 +93,7 @@ def sumProblem():
                 endTime = dt.now()
                 time = endTime - startTime
                 print(time)
+                saveData('addition', dt.now(), time)
                 break
         except ValueError:
             pass
@@ -95,6 +115,7 @@ def minusProblem():
                 endTime = dt.now()
                 time = endTime - startTime
                 print(time)
+                saveData('subtraction', dt.now(), time)
                 break
         except ValueError:
             pass
@@ -116,6 +137,7 @@ def multProblem():
                 endTime = dt.now()
                 time = endTime - startTime
                 print(time)
+                saveData('multiplication', dt.now(), time)
                 break
         except ValueError:
             pass
@@ -137,6 +159,7 @@ def divideProblem():
                 endTime = dt.now()
                 time = endTime - startTime
                 print(time)
+                saveData('division', dt.now(), time)
                 break
         except ValueError:
             pass
