@@ -19,8 +19,7 @@ TODO: Fix inconsistent quotations
 import random
 from datetime import datetime as dt
 import sys
-
-# Git Test
+import os
 
 # Create the required data files if they are not already created
 def initialize():
@@ -32,7 +31,7 @@ def initialize():
         createFiles()
 
 def createFiles():
-
+    os.mkdir('mathProblemsData')
     f = open('./mathProblemsData/AD_data.dat', 'w+')
     f.write('# This is the data file for all addition questions\n')
     f.close()
@@ -48,9 +47,6 @@ def createFiles():
     f = open('./mathProblemsData/DI_data.dat', 'w+')
     f.write('# This is the data file for all division questions\n')
     f.close()
-
-
-
 
 def exitGame():
     print("Thanks for playing!")
