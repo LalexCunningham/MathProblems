@@ -25,7 +25,7 @@ import os
 def initialize():
     try:
         f = open('./mathProblemsData/AD_data.dat', 'r')
-        if f.readline() != '# This is the header for AD_data\n':
+        if f.readline() != '# This is the data file for all addition questions\n':
             createFiles()
     except FileNotFoundError:
         createFiles()
