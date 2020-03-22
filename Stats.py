@@ -26,23 +26,24 @@ def getAvg(sumType):
 			#solveTimes.append(solveTime)
 		except UnboundLocalError:
 			pass
-	
-	return totalTime / counter
-	
+	try:
+		return totalTime / counter
+	except ZeroDivisionError:
+		print('No records for this sum type!')
 # Mainloop
 while True:
 	option = input('Which statistic would you like to look at?\n')
 	if option == 'addition':
-		getAvg('AD')
+		print(getAvg('AD'))
 		break
 	elif option == 'subtraction':
-		getAvg('SU')
+		print(getAvg('SU'))
 		break
 	elif option == 'multiplication':
-		getAvg('MU')
+		print(getAvg('MU'))
 		break
 	elif option == 'division':
-		getAvg('DI')
+		print(getAvg('DI'))
 		break
 	else:
 		print('Invalid input')
