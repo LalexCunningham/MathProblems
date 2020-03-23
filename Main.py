@@ -107,8 +107,9 @@ def sumProblem():
     num1 = random.randrange(1,1000)
     num2 = random.randrange(1,1000)
     answer = num1 + num2
+    startTime = dt.now()
     while True:
-        startTime = dt.now()
+        
         userAnswer = input("{} + {} = \n".format(num1, num2))
 
         try:
@@ -129,8 +130,9 @@ def minusProblem():
     num1 = random.randrange(1,2000)
     num2 = random.randrange(1,2000)
     answer = num1 - num2
+    startTime = dt.now()
     while True:
-        startTime = dt.now()
+        
         userAnswer = input("{} - {} = \n".format(num1, num2))
 
         try:
@@ -151,8 +153,8 @@ def multProblem():
     num1 = random.randrange(1,12)
     num2 = random.randrange(1, 12)
     answer = num1 * num2
+    startTime = dt.now()
     while True:
-        startTime = dt.now()
         userAnswer = input("{} * {} = \n".format(num1, num2))
 
         try:
@@ -173,8 +175,8 @@ def divideProblem():
     num1 = random.randrange(1, 12)
     num2 = random.randrange(num1, 100, num1)
     answer = num2 / num1
+    startTime = dt.now()
     while True:
-        startTime = dt.now()
         userAnswer = input("{} / {} = \n".format(num1, num2))
 
         try:

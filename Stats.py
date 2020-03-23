@@ -23,13 +23,13 @@ def getAvg(sumType):
 			solveTime = dt.timedelta(hours = int(solveTime[2:3]), minutes = int(solveTime[4:6]), seconds = int(solveTime[7:9]), microseconds = int(solveTime[10:140]))
 			totalTime = totalTime + solveTime
 			counter = counter + 1
-			#solveTimes.append(solveTime)
 		except UnboundLocalError:
 			pass
 	try:
 		return totalTime / counter
 	except ZeroDivisionError:
 		print('No records for this sum type!')
+		
 # Mainloop
 while True:
 	option = input('Which statistic would you like to look at?\n')
