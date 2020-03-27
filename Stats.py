@@ -2,12 +2,14 @@ import re
 from datetime import datetime
 import datetime as dt
 
-# Returns the average time recorded for a type of sum
-def getAvg(sumType):
+# TODO: Get weekly averages
+
+# Returns a list of moving averages, average changes with each problem solved, last list item is the overall average
+def getMovingAvg(sumType):
 	', 0:00:16.167658'
 	solveTimeRegex = re.compile(', \d:\d\d:\d\d.\d\d\d\d\d\d')
 	solveTimes = []
-
+	averages = []
 	f = open('./mathProblemsData/{}_data.dat'.format(sumType), 'r')
 	fList = f.readlines()
 
@@ -23,10 +25,11 @@ def getAvg(sumType):
 			solveTime = dt.timedelta(hours = int(solveTime[2:3]), minutes = int(solveTime[4:6]), seconds = int(solveTime[7:9]), microseconds = int(solveTime[10:140]))
 			totalTime = totalTime + solveTime
 			counter = counter + 1
+			averages.append(totalTime / counter)
 		except UnboundLocalError:
 			pass
 	try:
-		return totalTime / counter
+		return averages
 	except ZeroDivisionError:
 		print('No records for this sum type!')
 		
@@ -34,16 +37,18 @@ def getAvg(sumType):
 while True:
 	option = input('Which statistic would you like to look at?\n')
 	if option == 'addition':
-		print(getAvg('AD'))
+		avgs = getMovingAvg('AD')
+		for avg in avgs:
+			print(avg)
 		break
 	elif option == 'subtraction':
-		print(getAvg('SU'))
+		avgs = getMovingAvg('SU')
 		break
 	elif option == 'multiplication':
-		print(getAvg('MU'))
+		avgs = getMovingAvg('MU')
 		break
 	elif option == 'division':
-		print(getAvg('DI'))
+		avgs = getMovingAvg('DI')
 		break
 	else:
 		print('Invalid input')
